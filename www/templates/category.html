@@ -1,0 +1,53 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<ion-view view-title="taches">
+    <ion-content class="padding">
+        <div>
+            <aside class="col-sm-4">
+
+                <div class="row mt-3">
+                    <article class="card-body">
+                        <a href="" class="float-right btn btn-outline-primary" ng-click="changerPage()">Log out</a>
+                    </article>
+                </div>
+                <div class="row">
+                    <h1>Todo List : </h1>
+                </div>
+                <div class="row border-bottom">
+                    <p>Hi, {{username}} !</p>
+                </div>
+                <br>
+                <div ng-repeat="y in categories">
+                    <h5>
+                        <div class="row">
+                            <div class="col-2">
+                            <button class="btn btn-link float-left" ng-click="deleteCategory(y._id)" style="text-decoration: none;"> &times; </button>
+                            </div>
+                            <div class="col-10 float-right">
+                            <button class="form-control" ng-click="voirTaches(y.text)" >{{y.text}}</button>
+                            </div>
+                        </div>
+                    </h5>
+                </div>
+            
+                <br>
+                <div class="row border-top row border-bottom">
+                    
+                        <div class="col-9 col-lg-2"">
+                                <br>
+                        <input class="form-control" type="text" placeholder="Add a category" ng-model="newcategory">
+                        <br>
+                        </div>
+                        <div class="col-2 col-lg-2">
+                                <br>
+                        <button type="submit" class="btn btn-primary" ng-click="createCategory(newcategory); newcategory =''">Add</button><br>
+                        </div>
+                </div>
+            </aside>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        </div>
+    </ion-content>  
+</ion-view>

@@ -1,0 +1,50 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<ion-view view-title="taches">
+    <ion-content class="padding">
+        <div ng-controller="mainController">
+            <aside class="col-sm-4">
+
+                <div class="row mt-3">
+                    <article class="card-body">
+                        <a href="" class="float-right btn btn-outline-primary" ng-click="changerPage()">Log out</a>
+                        <a href="" class="float-left btn btn-outline-primary" ng-click="retour()">Back</a>
+                    </article>
+                </div>
+                <div class="row border-bottom">
+                    <h1>{{listname}} </h1>
+                </div>
+    
+                    <div ng-repeat="x in laliste" style="text-indent: 30px" ng-show='x.category==listname'>
+                        <button class="btn btn-link" ng-click="deleteTodo(x._id)" style="text-decoration: none;"> &times; </button>
+                        <span style="font-size: 15px;">{{x.date}} - </span>
+                        <span style="font-size: 15px;" ng-bind="x.text" onmouseover="" style="cursor: pointer;" ng-click="check(x._id)"
+                        ng-style="(x.done && {'text-decoration': 'line-through'}) || (!x.done && {'text-decoration': 'none'})">
+                        </span>
+                        <div class="row row border-bottom">
+                            <div class="col-9">
+                            <input class="form-control" type="text" placeholder="Rename" ng-model="newtext">
+                            </div>
+                            <div class="col-3">
+                            <input type="submit" class="btn btn-primary" value="Modify" ng-show="newtext" ng-click="changename(x._id, newtext)">    
+                            </div>  
+                        </div>                  
+                    </div>
+                    <div class="row">
+
+                            <div class="col-9">
+                            <input class="form-control" type="text" placeholder="Add a task" ng-model="newtask">
+                            </div>
+                            <div class="col-2">
+                            <button type="submit" class="btn btn-primary" ng-click="createTodo(listname, newtask); newtask = ''"">Add</button>
+                            </div>
+                    </div>
+                </div>
+            </aside>
+            <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        </div>
+    </ion-content>  
+</ion-view>
