@@ -7,5 +7,27 @@
     "www/**/*",
     "!www/lib/**/*",
     "!www/**/*.map"
+  ],
+  "proxies": [
+    {
+      "path": "/api/user",
+      "proxyUrl": "https://appwebmobilesylvain.herokuapp.com/api/user"
+    },
+    {
+      "path": "/api/createuser",
+      "proxyUrl": "https://appwebmobilesylvain.herokuapp.com/api/createuser"
+    },
+    {
+      "path": "/api/category",
+      "proxyUrl": "https://appwebmobilesylvain.herokuapp.com/api/category"
+    },
+    {
+      "path": "/api/laliste",
+      "proxyUrl": "https://appwebmobilesylvain.herokuapp.com/api/laliste"
+    },
+    {
+      "path": "/api/laliste/todo",
+      "proxyUrl": "https://appwebmobilesylvain.herokuapp.com/api/laliste/todo"
+    }
   ]
 }

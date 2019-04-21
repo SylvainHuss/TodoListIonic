@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
   $scope.formData = {};
 
   $scope.changerPage = function(){
-      $http.post('http://localhost:8888/api/user/', $scope.formData)
+      $http.post('/api/user/', $scope.formData)
       .success(function(data) {
           username=$scope.formData.username;
           $window.location.replace('#/tab/pagecategory');
@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.creerCompte = function(){
-      $http.post('http://localhost:8888/api/createuser/', $scope.formData)
+      $http.post('/api/createuser/', $scope.formData)
       .success(function() {
           $scope.formData = {};
       })
@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
 
 .controller('categoryController', function($scope, $http, $window) {
 
-    $http.get('http://localhost:8888/api/category')
+    $http.get('/api/category')
         .success(function(data) {
             $scope.categories = data;
             
@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
             console.log('Error : ' );
     });
 
-    $http.get('http://localhost:8888/api/user')
+    $http.get('/api/user')
     .success(function(data) {
         $scope.username = username;
         
@@ -54,7 +54,7 @@ angular.module('starter.controllers', [])
     });
 
     $scope.createCategory = function(category) {
-        $http.post('http://localhost:8888/api/category/' + category)
+        $http.post('/api/category/' + category)
             .success(function(data) {
                 $scope.categories = data;
                 
@@ -67,7 +67,7 @@ angular.module('starter.controllers', [])
     $scope.deleteCategory = function(id) {
         var conf = confirm("Are you sure to delete the entire category?");
         if (conf){
-            $http.delete('http://localhost:8888/api/category/' + id)
+            $http.delete('/api/category/' + id)
                 .success(function(data) {
                     $scope.categories = data;
                     
@@ -93,7 +93,7 @@ angular.module('starter.controllers', [])
     $scope.listname = listname;
 
     //Obtenir la liste (appel à la fonction get dans server.js)
-    $http.get('http://localhost:8888/api/laliste')
+    $http.get('/api/laliste')
         .success(function(data) {
           console.log(data);
             // if (data == 401) $window.location.href = '/accueil';
@@ -105,7 +105,7 @@ angular.module('starter.controllers', [])
     });
 
     //Obtenir la liste (appel à la fonction get dans server.js)
-    $http.get('http://localhost:8888/api/category')
+    $http.get('/api/category')
         .success(function(data) {
             $scope.categories = data;
             
@@ -114,7 +114,7 @@ angular.module('starter.controllers', [])
             console.log('Error : ' );
     });
 
-    $http.get('http://localhost:8888/api/user')
+    $http.get('/api/user')
     .success(function(data) {
         $scope.username = data;
         
@@ -125,7 +125,7 @@ angular.module('starter.controllers', [])
 
     //rajout d'une donnée (appel à la fonction post dans server.js)
     $scope.createTodo = function(category, newtask) {
-        $http.post('http://localhost:8888/api/laliste/' + category + '/' + newtask)
+        $http.post('/api/laliste/' + category + '/' + newtask)
             .success(function(data) {
                 $scope.laliste = data;
                 
@@ -136,7 +136,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.createCategory = function(category) {
-        $http.post('http://localhost:8888/api/category/' + category)
+        $http.post('/api/category/' + category)
             .success(function(data) {
                 $scope.categories = data;
                 
@@ -148,7 +148,7 @@ angular.module('starter.controllers', [])
 
     //rajout d'une donnée (appel à la fonction delete dans server.js)
     $scope.deleteTodo = function(id) {
-        $http.delete('http://localhost:8888/api/laliste/' + id)
+        $http.delete('/api/laliste/' + id)
             .success(function(data) {
                 $scope.laliste = data;
                 
@@ -161,7 +161,7 @@ angular.module('starter.controllers', [])
     $scope.deleteCategory = function(id) {
         var conf = confirm("Are you sure to delete the entire category?");
         if (conf){
-            $http.delete('http://localhost:8888/api/category/' + id)
+            $http.delete('/api/category/' + id)
                 .success(function(data) {
                     $scope.categories = data;
                     
@@ -173,7 +173,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.check = function(id){
-        $http.put('http://localhost:8888/api/laliste/' + id)
+        $http.put('/api/laliste/' + id)
             .success(function(data){
                 $scope.laliste = data;
                 
@@ -184,7 +184,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.changename = function(id, newtext){
-        $http.put('http://localhost:8888/api/laliste/todo/' + id + '/' + newtext)
+        $http.put('/api/laliste/todo/' + id + '/' + newtext)
             .success(function(data){
                 $scope.newData = {}
                 $scope.laliste = data;
